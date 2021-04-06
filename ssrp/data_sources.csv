@@ -1,0 +1,24 @@
+﻿data_files,data_source,known_missing,page,location,notes,provided,cited
+scraped_posts.txt,Raw text for threads scraped from the EJMR forum,,870,data/raw,,TRUE,TRUE
+EJR0_raw_text.csv,Raw EJMR text converted to csv format,,870,data/raw,,TRUE,TRUE
+EJR0_raw_text_cleaned.csv,Cleaned EJMR text,,870,data/raw,,TRUE,TRUE
+main_stats_cleaned.csv,Thread level statistics for EJMR threads,,870,data/raw,,TRUE,TRUE
+raw_time_stamp.csv,First post time stamps for EJMR threads,,870,data/raw,,TRUE,TRUE
+vocab_Nov2017.pkl,"Dictionary of 10,000 most frequent words",,871,data/raw,,TRUE,TRUE
+counts_Nov2017.npz,Matrix of word counts for posts,,871,data/raw,,TRUE,TRUE
+all_cat_2019.csv,Counts of words for each category in posts,,871,data/raw,,TRUE,TRUE
+EJR_ALL_categories_2019.csv,Counts of words for each category with thread and post IDs,,871,data/raw,,TRUE,TRUE
+all_classifiers_2019.csv,Counts of female and male classifiers,,871,data/raw,,TRUE,TRUE
+EJR_ALL_gender_classifiers_2019.csv,Counts of female and male classifiers with thread and post IDs,,871,data/raw,,TRUE,TRUE
+full_sample_job_rank.csv,Keywords indicating job rank.,,871,data/raw,,TRUE,TRUE
+cleaned_vocab.csv,"Most frequent 10,000 words with category classification",,871,data/vocab,,TRUE,TRUE
+gender_classifiers.csv,Hand-collected male and female classifiers,,871,data/vocab,,TRUE,TRUE
+0.txt; 1.5.txt; 1.txt; 2.5.txt; 2.txt; 3.txt; 4.4.txt; 4.5.txt; 4.6.txt; 4.txt; 5.txt; 6.5.txt; 6.txt; 7.txt; 8.txt; exclude_names.txt,Category labels for words,,871,data/vocab/category,,TRUE,TRUE
+author-history-ID-by-full.csv,IDs for posts that mention a full NBER author's name,,871,data/NBER,,TRUE,TRUE
+author-history-ID-by-part.csv,IDs for posts that mention part of a NBER author's name,,871,data/NBER,,TRUE,TRUE
+author-history-merged.csv,Merge the NBER history datasets with the posts,,871,data/NBER,,TRUE,TRUE
+nber-author-info.csv,Scraped information about NBER authors,,871,data/NBER,,TRUE,TRUE
+complete-nber-author-info.csv,Scraped NBER author information with job rank,,871,data/NBER,,TRUE,TRUE
+jmc_data_gender_nonmissing.csv,Directory of recent economics PhD graduates from JMC,,871,data/JMC,,TRUE,TRUE
+JMC-history-ID.csv,IDs for posts that mention a a JMC person's name,,871,data/JMC,,TRUE,TRUE
+JMC-history-ID-merged.csv,Merge the JMC history datasets with the posts,,871,data/JMC,,TRUE,TRUE

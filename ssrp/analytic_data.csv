@@ -1,0 +1,4 @@
+﻿analytic_data,location,description
+full_sample2019_stata_final.dta,data,All threads in the gender sample with one gendered posts with measures at the post level
+full_sample2019_stata.csv,data,All threads in the gender sample with one gendered posts with measures at the post level
+full_sample2019.csv,data,All threads in the gender sample

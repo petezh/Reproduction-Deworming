@@ -1,0 +1,21 @@
+﻿file_name,location,inputs,outputs,description,primary_type
+static_analysis_2019.do,code,full_sample2019_stata_final.dta,codebook_dta.log; summary_stats_0.log; summary_stats_1.log; summary_stats_2.log; summary_stats_3.log; summary_stats_4.log; topic-diff-by-month.csv,Provides summary statistics and topic differences between male and female posts.,analysis
+dynamic_analysis_2019.do,code,full_sample2019_stata_final.dta,AME-by-length.log; mlogit-full-after-Aug2017.log; mlogit-full-before-Aug2017.log,Runs multinomial logistic regression on transition probability,analysis
+figure1_nthreads_by_month_first.xlsx,figures,topic-diff-by-month.csv,figure1_nthreads_by_month_first.pdf,Creates figure 1,analysis
+figure3-4_topic_diff_by_job,figures,summary_stats_0.log; summary_stats_1.log; summary_stats_2.log; summary_stats_3.log; summary_stats_4.log,figure3a_mean_acad_by_job.pdf; figure3b_mean_acad_by_job2.pdf; figure4a_mean_person_by_job.pdf; figure4b_mean_person_by_job2.pdf,"Creates figures 3a, 3b, 4a, 4b",analysis
+figure5-7_dynamic,figures,AME-by-length.log; mlogit-full-after-Aug2017.log; mlogit-full-before-Aug2017.log,figure6a_persist_by_length.pdf; figure6b_to_person_by_length.pdf; figure7a_persist_by_job.pdf; figure7b_to_person_by_job.pdf,"Creates figures 6a, 6b, 7a, 7b",analysis
+clean_scraped_data.py,code,scraped_posts.txt,EJR0_raw_text.csv,Assigns IDs and generates CSV file,cleaning
+clean_raw_text.R,code,EJR0_raw_text.csv,EJR0_raw_text_cleaned.csv,Cleans up the raw posts,cleaning
+word_count.py,code,EJR0_raw_text_cleaned.csv,vocab_Nov2017.pkl; counts_Nov2017.npz; main_stats_cleaned.csv,"Identifies the most frequent 10,000 words",cleaning
+manual,,vocab_Nov2017.pkl,cleaned_vocab.csv,"Select 10,000 most frequent words",cleaning
+vocab.R,code,cleaned_vocab.csv,0.txt; 1.5.txt; 1.txt; 2.5.txt; 2.txt; 3.txt; 4.4.txt; 4.5.txt; 4.6.txt; 4.txt; 5.txt; 6.5.txt; 6.txt; 7.txt; 8.txt; exclude_names.txt,Saves indices of words into different categories,cleaning
+prep_for_analysis.py,code,EJR0_raw_text_cleaned.csv; counts_Nov2017.npz; gender_classifiers.csv; 0.txt; 1.5.txt; 1.txt; 2.5.txt; 2.txt; 3.txt; 4.4.txt; 4.5.txt; 4.6.txt; 4.txt; 5.txt; 6.5.txt; 6.txt; 7.txt; 8.txt; exclude_names.txt,all_cat_2019.csv; EJR_ALL_categories_2019.csv; EJR_ALL_gender_classifiers_2019.csv; all_classifiers_2019.csv,Counts occurrences of words in each category for all posts,cleaning
+NBER-post-history-ID (by full).R,code,EJR0_raw_text_cleaned.csv; nber-author-info.csv,author-history-ID-by-full.csv,Identifies posts with full NBER names,cleaning
+NBER-post-history-ID-round2 (by part).R,code,EJR0_raw_text_cleaned.csv; nber-author-info.csv,author-history-ID-by-part.csv,Identifies posts with partial NBER names,cleaning
+JMC-post-history-ID.R,code,EJR0_raw_text_cleaned.csv; jmc_data_gender_nonmissing.csv,JMC-history-ID.csv,Finds posts with a full/partial JMC names,cleaning
+merge_sources.R,code,EJR_gender_dataset_Jan2018.csv; author-history-merged.csv; JR0_raw_text_cleaned.csv; main_stats_cleaned.csv; raw_time_stamp.csv; EJR_ALL_gender_classifiers_2019.csv; JMC-history-ID-merged.csv,full_sample2019.csv,"Merges gender classifiers, NBER authors, and JMC data",cleaning
+job-rank.R,code,full_sample2019.csv,full_sample_job_rank.csv,Counts keywords for job ranks in each post,cleaning
+gen_full_sample.R,code,full_sample2019.csv; author-history-merged.csv; complete-nber-author-info.csv; EJR_ALL_categories_2019.csv; full_sample_job_rank.csv; JMC-history-ID-merged.csv,full_sample2019_stata.csv,"Finalizes gender, merges counts by categories, merges keywords about subjects, and adds job ranks",cleaning
+manual,,full_sample2019_stata.csv,full_sample2019_stata.dta,Convert to Stata,cleaning
+figure2_topic_diff.R,code,topic-diff-by-month.csv,figure2_person_by_month_first_1yr.pdf,Creates figure 2,analysis
+manual,,jmc_data_gender_nonmissing.csv; JMC-history-ID.csv,JMC-history-ID-merged.csv,Adds thread and post IDs to JMC data,cleaning
