@@ -1,5 +1,5 @@
 ﻿file_name,location,inputs,outputs,description,primary_type
-Worms20_MasterDo.do,do,Worms20_Globals.do,Worms20_master_main.do; Worms20_do_appendix.do,"Produces all tables, figures, and in-text results in the main paper and appendix.",master
+Worms20_MasterDo.do,do,Worms20_Globals.do,Worms20_master_main.do; Worms20_master_paper_appendix.do,"Produces all tables, figures, and in-text results in the main paper and appendix.",master
 Worms20_master_main.do,do/main,Worms20_MasterDo.do,Earnings_consumption_hhearn_main_byage.do; Earnings_wealth_labor_occchoice_main_byage.do; Consumption_earnings_KD.do,"Produces all tables, figures, and in-text results in the main paper.",master
 Earnings_consumption_hhearn_main_byage.do,do/main,Worms20_master_main.do; Worms20_Analysis.dta,Table 1 - KLPS4_E+_earnings_consumption_main_byage.tex,Computes earnings and consumption effects.,analysis
 Earnings_wealth_labor_occchoice_main_byage.do,do/main,Worms20_master_main.do; Worms20_Analysis.dta,Table 2 - KLPS4_E+_earnings_labor_occchoice_main_byage.tex,"Computes earnings, wealth, labor supply, occupation, and sectoral choice.",analysis
