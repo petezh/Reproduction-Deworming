@@ -9,20 +9,17 @@
 rm(list = ls())
 
 #-------- load libaries
-library(data.table)
-library(tidyverse)
-library(stargazer)
-library(ggplot2)
-library(readxl)
-library(dplyr)
-library(ggrepel)
-library(grid)
-
-#-------- set main directory
-setwd(".")
+# library(data.table)
+# library(tidyverse)
+# library(stargazer)
+# library(ggplot2)
+# library(readxl)
+# library(dplyr)
+# library(ggrepel)
+# library(grid)
 
 #------- load dataset of estimates from Excel
-earnings.df<- read_excel("temp/Earnings_results_for_R.xlsx")
+earnings.df<- read_excel(here("temp", "Earnings_results_for_R.xlsx"))
 
 #------- variables for graph style "mapping"
 earnings.df$mapping <- ifelse(grepl("female",earnings.df$model),"female",ifelse(grepl("all",earnings.df$model),"all","male"))

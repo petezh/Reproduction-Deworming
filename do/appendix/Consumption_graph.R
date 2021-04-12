@@ -9,20 +9,17 @@
 rm(list = ls())
 
 #-------- load libaries
-library(data.table)
-library(tidyverse)
-library(stargazer)
-library(ggplot2)
-library(readxl)
-library(dplyr)
-library(grid)
-library(gridExtra)
-
-#-------- set main directory
-setwd(".")
+# library(data.table)
+# library(tidyverse)
+# library(stargazer)
+# library(ggplot2)
+# library(readxl)
+# library(dplyr)
+# library(grid)
+# library(gridExtra)
 
 #------- load dataset of estimates from Excel
-data<- read_excel("temp/Consumption_results_for_R.xlsx")
+data<- read_excel(here("temp/Consumption_results_for_R.xlsx"))
 
 #------- remove KLPS-2 from plotting data
 consumption.df <- subset(data, !grepl("klps2",model))

@@ -1,7 +1,7 @@
 ################################################################################
 # File Name:    Cost_benefit_Graph.R
 #
-# Description:  This R script creates Figure 1: the cost-benefit figure 
+# Description:  This R script creates Figure 2: the cost-benefit figure 
 
 ################################################################################
 
@@ -9,15 +9,14 @@
 rm(list = ls())
 
 #-------- load libaries
-library(data.table)
-library(tidyverse)
-library(stargazer)
-library(ggplot2)
-library(readxl)
-library(dplyr)
+# library(data.table)
+# library(tidyverse)
+# library(stargazer)
+# library(ggplot2)
+# library(readxl)
+# library(dplyr)
 
 #-------- set output directory
-setwd("KLPS/20-yr-replication_materials/output")
 
 ##25-year - Third graph
 ggplot(data=NULL) +
@@ -60,4 +59,4 @@ ggplot(data=NULL) +
   theme(axis.line.x=element_line(colour="grey50"), 
         axis.line.y=element_line(colour="grey50"))
 
-ggsave("KLPS4_cost_benefit_pooled.eps")
+ggsave(here("output", "KLPS4_cost_benefit_pooled.eps"))
