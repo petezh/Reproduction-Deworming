@@ -1,0 +1,21 @@
+-------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  C:/Users/thepe/Documents/GitHub/ACRE-Deworming/output/percent_curr
+> ently_in_school.log
+  log type:  text
+ opened on:  12 Apr 2021, 01:03:30
+
+. 
+.         use "$data/Worms20_Analysis.dta",clear
+
+.         keep if interview_round==4
+(9,674 observations deleted)
+
+.         summ in_school_klps4 [aw=weight] //1.2% currently in school
+
+    Variable |     Obs      Weight        Mean   Std. Dev.       Min        Max
+-------------+-----------------------------------------------------------------
+in_school_~4 |   1,692  6642.19648    .0122055   .1098349          0          1
+
+.         
+.         cap log close

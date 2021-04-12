@@ -1,0 +1,20 @@
+-------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  C:/Users/thepe/Documents/GitHub/ACRE-Deworming/output/agriculture_
+> with_hhmembers.log
+  log type:  text
+ opened on:  12 Apr 2021, 01:03:30
+
+.         
+.         use "$data/Worms20_Analysis.dta",clear
+
+.         summ hhmember_work_ag if farm_work_12m!=0  [aw=weight] //70% of house
+> holds (where the focus respondent worked in ag. in the last 12 months) have a
+> t least 1 other hh member working in this agricultural activity
+
+    Variable |     Obs      Weight        Mean   Std. Dev.       Min        Max
+-------------+-----------------------------------------------------------------
+hhmember_w~g |   2,172  7913.28502    .6998775   .4584166          0          1
+
+. 
+.         cap log close
