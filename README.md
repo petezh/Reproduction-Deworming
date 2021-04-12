@@ -10,7 +10,7 @@ The attempt follows the provided [reproduction package](https://dataverse.harvar
 
 Hamory et al. expand the deworming literature by assessing impacts 20 years in the future. Data from the Primary School Deworming Project (PSDP), a randomized intervention conducted across control and treatment schools, is cross-referenced with the Kenya Life Panel Survey (KLPS) to assess a variety of living standards. Regression is conducted on two sets of KLPS data with the following specification:
 
-<img src="https://latex.codecogs.com/gif.latex?O_t=Y_{ijt} = \alpha + \lambda_1T_j + \lambda_2C_j + \lambda_3P_j + X'_{ij, 0} \beta + \epsilon_{ijt}" />
+![](img/spec.jpg)
 
 where *Y* is an outcome for an individual *i* in school *j* in survey round *t*, *T* indicates treatment, *C* and *P* are cost-sharing and saturation indicators, and *X* denotes a panel of school and individual covariates.
 
@@ -186,13 +186,13 @@ Edits to the original file include:
 
 A robustness check is conducted on results 4 through 6 (and, indirectly, result 2). A regression is conducted on only male *and* older subjects to isolate the confluence of the two variables. We adopt the following regression specification
 
-<img src="https://latex.codecogs.com/gif.latex?O_t=Y_{ijt} = \alpha + \lambda_1T_j + T_j Y_i \gamma_i +  \lambda_2C_j + \lambda_3P_j + X'_{ij, 0} \beta + \epsilon_{ijt}" />
+![](img/altspec.jpg)
 
 where Y includes an individual's gender, age, and an interaction variable between gender and age.
 
 The results, with the additional specification in column 4, are below:
 
-![](output/fig2.png)
+![](img/fig2.png)
 
 Considering only older males increases the significance of every effect over male or older subjects alone. We observe particularly large increases in effect size for wage earnings (301 vs. 162), non-zero earnings (0.05 vs 0.02), total hours worked (3.94 vs 2.2), and non-agriculture hours worked (4.44 vs. 2.77). These results suggest that the overall increase may be driven in large part by older males specifically.
 
