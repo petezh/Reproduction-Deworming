@@ -7,10 +7,9 @@
 //Preliminaries
 clear all
 set more off
-set maxvar 10000
 
 //Define directory structure
-global dir "" //Update to own local directory
+global dir `c(pwd)' //Update to own local directory
 
 * generate folders not included in the replication folder structure
 cd "$dir"
@@ -30,7 +29,7 @@ adopath ++ "$dir/ado/ssc"
 adopath ++ "$dir/ado"
 
 //Install necessary packages
-  local packages keeporder estout lincom lincomest
+  local packages keeporder estout lincom lincomest texdoc
   foreach p of local packages {
 	capture which `p'.ado
 	if _rc==111 ssc install `p'
