@@ -1,0 +1,52 @@
+\documentclass[6pt,landscape]{article}
+\usepackage{amsmath,textcomp,amssymb,geometry,graphicx,enumerate,siunitx, booktabs,stackengine}
+
+\newcommand{\bettershortstack}[2][c]{%
+  \begin{tabular}[b]{@{}#1@{}}#2\end{tabular}%
+}
+\newcommand{\sym}[1]{#1} % for symbols in Table
+
+\begin{document}
+
+
+\begin{tabular}{lllllll}
+\toprule
+            &\multicolumn{3}{c}{\bettershortstack{Treatment ($\lambda_1$)}}   &\multicolumn{3}{c}{\bettershortstack{Full Sample}}               \\\cmidrule(lr){2-5}\cmidrule(lr){6-7}
+            &\multicolumn{1}{c}{(1)}         &\multicolumn{1}{c}{(2)}         &\multicolumn{1}{c}{(3)}         &\multicolumn{1}{c}{(4)}         &\multicolumn{1}{c}{(5)}         &\multicolumn{1}{c}{(6)}         \\
+            &\multicolumn{1}{c}{Full Sample}         &\multicolumn{1}{c}{Male}         &\multicolumn{1}{c}{Older}         &\multicolumn{1}{c}{Older Male}         &\multicolumn{1}{c}{Control Mean}         &\multicolumn{1}{c}{Obs.}         \\
+\midrule
+\emph{Panel A: Earnings and Wealth} & & & \\ Log Annual Individual Earnings&        0.09         &        0.06         &        0.19\sym{**} &        0.22\sym{***}&        6.73         &     7698.00         \\
+            &      (0.06)         &      (0.07)         &      (0.08)         &      (0.08)         &                     &                     \\
+Wage Earnings (annual)&          81         &         138         &         162\sym{*}  &         301\sym{***}&         887         &       13628         \\
+            &        (68)         &       (110)         &        (89)         &        (89)         &                     &                     \\
+Self-Employment Profit (annual)&          41\sym{*}  &          51         &          70\sym{*}  &          89\sym{**} &         212         &       13638         \\
+            &        (24)         &        (48)         &        (39)         &        (39)         &                     &                     \\
+Individual Farming Profit (annual)&          -0         &           1         &          -3         &          -3         &           9         &       13707         \\
+            &         (2)         &         (3)         &         (3)         &         (3)         &                     &                     \\
+Non-Zero Earnings&        0.02\sym{*}  &        0.04\sym{**} &        0.02         &        0.05\sym{***}&        0.59         &    13794         \\
+            &      (0.01)         &      (0.02)         &      (0.02)         &      (0.02)         &                     &                     \\
+Hourly Earnings&        0.14\sym{*}  &        0.22         &        0.32\sym{*}  &        0.41\sym{**} &        1.07         &     6096         \\
+            &      (0.08)         &      (0.15)         &      (0.16)         &      (0.16)         &                     &                     \\
+Per-Capita Household Wealth (KLPS-4)&          69         &         102         &         253\sym{***}&         316\sym{***}&         522         &        4085         \\
+            &        (50)         &        (97)         &        (89)         &        (89)         &                     &                     \\
+\midrule
+\multicolumn{3}{l}{\emph{Panel B: Labor Supply, Occupation, and Sectoral Choice}} & \\ Urban Residence&        0.04\sym{**} &        0.06\sym{**} &        0.03         &        0.06\sym{**} &        0.45         &    13793          \\
+            &      (0.02)         &      (0.03)         &      (0.03)         &      (0.03)         &                     &                     \\
+Total Hours Worked (last 7 days)&        1.04         &        2.20\sym{**} &        1.79\sym{**} &        3.94\sym{***}&       24.19         &    13807         \\
+            &      (0.66)         &      (0.92)         &      (0.91)         &      (0.91)         &                     &                     \\
+Hours Worked - Agriculture (last 7 days)&       -0.87\sym{**} &       -0.57         &       -0.46         &       -0.50         &        3.99         &    13807         \\
+            &      (0.43)         &      (0.62)         &      (0.56)         &      (0.56)         &                     &                     \\
+Hours Worked - Non-Agriculture (last 7 days)&        1.91\sym{***}&        2.77\sym{***}&        2.24\sym{**} &        4.44\sym{***}&       20.20         &    13807         \\
+            &      (0.65)         &      (0.94)         &      (1.08)         &      (1.08)         &                     &                     \\
+Employed - Agriculture/Fishing&      -0.003         &      -0.001         &       0.004         &       0.012         &       0.043         &   13768         \\
+            &     (0.008)         &     (0.013)         &     (0.012)         &     (0.012)         &                     &                     \\
+Employed - Services/Wholesale/Retail&       0.002         &       0.012         &      -0.002         &       0.028         &       0.230         &   13761         \\
+            &     (0.014)         &     (0.020)         &     (0.019)         &     (0.019)         &                     &                     \\
+Employed - Construction/Trade Contractor&       0.004         &       0.011         &      -0.007         &      -0.002         &       0.033         &   13760         \\
+            &     (0.007)         &     (0.014)         &     (0.009)         &     (0.009)         &                     &                     \\
+Employed - Manufacturing&      -0.001         &       0.002         &       0.002         &       0.011\sym{*}  &       0.026         &   13760         \\
+            &     (0.004)         &     (0.007)         &     (0.006)         &     (0.006)         &                     &                     \\
+\bottomrule
+\end{tabular}
+
+\end{document}
