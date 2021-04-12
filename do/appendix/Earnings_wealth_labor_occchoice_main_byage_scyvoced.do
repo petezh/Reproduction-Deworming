@@ -9,7 +9,6 @@
 
 
 clear all
-set maxvar 10000
 set more off
 	
 //Initialize Latex document

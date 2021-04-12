@@ -6,11 +6,10 @@
 ********************************************************************************
 
 clear all
-set maxvar 10000
 set more off
 	
 //Initialize .tex file
-	texdoc init "$output/KLPS4_E+_earnings_consumption_main_byage.tex", replace force
+	texdoc init `c(pwd)', replace force
 	texdoc write \\ \toprule
 	texdoc close
 

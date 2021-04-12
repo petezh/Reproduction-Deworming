@@ -8,9 +8,6 @@ clear
 clear matrix
 clear mata
 set more off
-set mem 750m
-set matsize 800
-set maxvar 20000
 cap log close
 
 

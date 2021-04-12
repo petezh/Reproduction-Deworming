@@ -8,7 +8,6 @@
 
 clear all
 set more off
-set maxvar 10000
 
 //Write .tex file for combined baseline stats + treatment control stats
 	texdoc init "$output/KLPS4_E+_heterogeneity_treateffects.tex", replace force

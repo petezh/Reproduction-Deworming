@@ -15,7 +15,6 @@
 
 clear all
 set more off
-set maxvar 10000
 capture log close
 
 //Define locals

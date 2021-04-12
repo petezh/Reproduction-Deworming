@@ -9,9 +9,6 @@ clear
 clear matrix
 clear mata
 set more off
-set mem 750m
-set matsize 800
-set maxvar 20000
 cap log close
 
 **FIGURE S1: Project Timeline of the Primary School Deworming Program (PSDP) and the Kenya Life Panel Survey (KLPS)

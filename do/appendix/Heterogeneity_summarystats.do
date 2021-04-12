@@ -8,7 +8,6 @@
 
 clear all
 set more off
-set maxvar 10000
 
 //Initialize Latex file
 	texdoc init "$output/KLPS4_E+_heterogeneity_summarystats.tex", replace force

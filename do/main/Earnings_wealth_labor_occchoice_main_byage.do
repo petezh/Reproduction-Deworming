@@ -5,10 +5,34 @@
 
 ********************************************************************************
 
+
+global domain "$dir/do"
+global rawdata "$dir/rawdata"
+global data "$dir/data"
+global log "$dir/logs"
+global temp "$dir/temp"
+global table "$dir/output"
+global output "$dir/output"
+
+adopath ++ "$dir/ado/ssc"
+adopath ++ "$dir/ado"
+
+//Install necessary packages
+  local packages keeporder estout lincom lincomest texdoc
+  foreach p of local packages {
+	capture which `p'.ado
+	if _rc==111 ssc install `p'
+  }
+
+********************************************************************************
+
+//Define global variables (e.g., conversion rates, controls, etc.)
+do "$domain/Worms20_Globals.do"
+
+
 clear all
 estimates clear
 set more off
-set maxvar 10000
 capture log close
 
 //Initialize .tex file
@@ -24,6 +48,10 @@ label variable cost_sharing "Cost Sharing"
 label variable saturation_dm "Saturation"
 
 //Create interaction variables
+gen treatXyoungfem = treatment * younger * female
+gen costXyoungfem = cost_sharing * younger * female
+gen satXyoungfem = saturation_dm * younger * female
+
 gen treatXfemale = treatment * female
 gen costXfemale = cost_sharing * female
 gen satXfemale = saturation_dm * female
@@ -96,8 +124,26 @@ esttab, se nostar keep(treatment)
 matrix C = r(coefs)
 eststo clear
 
+//Column 4: Pooled other earnings outcomes - YOUNG FEMALE
+local outcomes tot_ln_earn12m_t wage_earn12m_t self_earn12m_t ///
+		farm_earn12m_t nonzero_earn_12m tot_hrearn12m_t tot_wealth_t
 
-//Column 4: Pooled mean of dep variable
+local i 0
+foreach outcome of local outcomes {
+	local ++i
+	if "`outcome'"=="tot_wealth_t" {
+		eststo model`i': reg `outcome' younger female treatment treatXfemale costXfemale satXfemale treatXyounger costXyounger satXyounger treatXyoungfem costXyoungfem satXyoungfem  $x_controls1 [pw=weight], cluster(psdpsch98)
+	}
+	else {
+		eststo model`i': reg `outcome' younger female treatment treatXfemale costXfemale satXfemale treatXyounger costXyounger satXyounger treatXyoungfem costXyoungfem satXyoungfem $x_controls_panel [pw=weight], cluster(psdpsch98)
+	}
+}
+ 
+esttab, se nostar keep(treatment)
+matrix D = r(coefs)
+eststo clear
+
+//Column 5: Pooled mean of dep variable
 local outcomes tot_ln_earn12m_t wage_earn12m_t self_earn12m_t ///
 		farm_earn12m_t nonzero_earn_12m tot_hrearn12m_t tot_wealth_t
 local modnames log_earn wage_earn self_profit farm_profit nonzero hourly_earn wealth
@@ -113,7 +159,7 @@ foreach outcome of local outcomes {
 	matrix m1 = nullmat(m1), tmp
 }
 
-//Column 5: Number of observations of full sample
+//Column 6: Number of observations of full sample
 local outcomes tot_ln_earn12m_t wage_earn12m_t self_earn12m_t ///
 		farm_earn12m_t nonzero_earn_12m tot_hrearn12m_t tot_wealth_t
 local modnames log_earn wage_earn self_profit farm_profit nonzero hourly_earn wealth
@@ -176,7 +222,27 @@ ereturn post b
 estadd matrix se
 eststo pooled_male
 esttab, se mtitle noobs
+local models : coleq C
+local models : list uniq models
+local nummods : list sizeof models
+local modnames log_earn wage_earn self_profit farm_profit nonzero hourly_earn wealth
 
+cap matrix drop b
+cap matrix drop se
+forval i=1/`nummods' {
+	local modelname: word `i' of `modnames'
+	matrix tmp = C[1, 2*`i'-1]
+    if tmp[1,1]<. {
+	    matrix colnames tmp = `modelname'
+		matrix b = nullmat(b), tmp
+		matrix tmp[1,1] = C[1, 2*`i']
+		matrix se = nullmat(se), tmp
+	}
+}
+ereturn post b
+estadd matrix se
+eststo pooled_older
+esttab, se mtitle noobs
 //Column 3
 local models : coleq C
 local models : list uniq models
@@ -201,6 +267,29 @@ eststo pooled_older
 esttab, se mtitle noobs
 
 //Column 4
+local models : coleq D
+local models : list uniq models
+local nummods : list sizeof models
+local modnames log_earn wage_earn self_profit farm_profit nonzero hourly_earn wealth
+
+cap matrix drop b
+cap matrix drop se
+forval i=1/`nummods' {
+	local modelname: word `i' of `modnames'
+	matrix tmp = D[1, 2*`i'-1]
+    if tmp[1,1]<. {
+	    matrix colnames tmp = `modelname'
+		matrix b = nullmat(b), tmp
+		matrix tmp[1,1] = C[1, 2*`i']
+		matrix se = nullmat(se), tmp
+	}
+}
+ereturn post b
+estadd matrix se
+eststo pooled_oldermale
+esttab, se mtitle noobs
+
+//Column 4
 ereturn post m1
 eststo pooled_meandepvar
 
@@ -218,8 +307,8 @@ esttab using "$output/KLPS4_E+_earnings_labor_occchoice_main_byage.tex", append
 	b(star fmt(%12.2f) keep(log_earn nonzero hourly_earn )) 
 	se(par fmt(%12.2f) keep(log_earn nonzero hourly_earn )))
 	se nomtitles collabels(none) noobs star(* .10 ** .05 *** .01) fragment
-	mgroups("\bettershortstack{Treatment ($\lambda_1$)}" "\bettershortstack{Full Sample}", pattern(1 0 0 1 0) prefix(\multicolumn{@span}{c}{) suffix(}) span erepeat(\cmidrule(lr){@span}))
-	mlabels("\multicolumn{1}{c}{Full Sample}" "\multicolumn{1}{c}{Male}" "\multicolumn{1}{c}{Older}" "\multicolumn{1}{c}{Control Mean}" "\multicolumn{1}{c}{Number Obs.}")
+	mgroups("\bettershortstack{Treatment ($\lambda_1$)}" "\bettershortstack{Full Sample}", pattern(1 0 0 0 1 0) prefix(\multicolumn{@span}{c}{) suffix(}) span erepeat(\cmidrule(lr){@span}))
+	mlabels("\multicolumn{1}{c}{Full Sample}" "\multicolumn{1}{c}{Male}" "\multicolumn{1}{c}{Older}"  "\multicolumn{1}{c}{Older Male}" "\multicolumn{1}{c}{Control Mean}" "\multicolumn{1}{c}{Number Obs.}")
 	coeflabels(log_earn "\emph{Panel A: Earnings and Wealth} & & & \\ Log Annual Individual Earnings" wage_earn "Wage Earnings (annual)" self_profit "Self-Employment Profit (annual)"
 		farm_profit "Individual Farming Profit (annual)" nonzero "Non-Zero Earnings" hourly_earn "Hourly Earnings" wealth "Per-Capita Household Wealth (KLPS-4)" )
 	substitute(\_ _)
@@ -279,7 +368,21 @@ matrix C = r(coefs)
 eststo clear
 
 
-//Column 4: Pooled mean of dep variable
+//Column 4: Pooled other earnings outcomes - OLDER MALE
+local outcomes urban tot_hrs farm_hrs nonfarm_hrs emp_ag_fish emp_services_wsale emp_construct_contract emp_manufacturing
+
+local i 0
+foreach outcome of local outcomes {
+	local ++i
+	eststo model`i': reg `outcome' younger female treatment treatXfemale costXfemale satXfemale treatXyounger costXyounger satXyounger treatXyoungfem costXyoungfem satXyoungfem  $x_controls_panel [pw=weight], cluster(psdpsch98)
+}
+
+esttab, se nostar keep(treatment)
+matrix D = r(coefs)
+eststo clear
+
+
+//Column 5: Pooled mean of dep variable
 local outcomes urban tot_hrs farm_hrs nonfarm_hrs emp_ag_fish emp_services_wsale emp_construct_contract emp_manufacturing
 local modnames urban_res total_hrs agri_hrs nonagri_hrs af_emp swr_emp c_emp manufacturing_emp
 
@@ -294,7 +397,7 @@ foreach outcome of local outcomes {
 	matrix m1 = nullmat(m1), tmp
 }
 
-//Column 5: Number of observations of full sample
+//Column 6: Number of observations of full sample
 local outcomes urban tot_hrs farm_hrs nonfarm_hrs emp_ag_fish emp_services_wsale emp_construct_contract emp_manufacturing
 local modnames urban_res total_hrs agri_hrs nonagri_hrs af_emp swr_emp c_emp manufacturing_emp
 
@@ -379,6 +482,29 @@ forval i=1/`nummods' {
 ereturn post b
 estadd matrix se
 eststo pooled_older
+esttab, se mtitle noobs
+
+//Column 3
+local models : coleq D
+local models : list uniq models
+local nummods : list sizeof models
+local modnames urban_res total_hrs agri_hrs nonagri_hrs af_emp swr_emp c_emp manufacturing_emp
+
+cap matrix drop b
+cap matrix drop se
+forval i=1/`nummods' {
+	local modelname: word `i' of `modnames'
+	matrix tmp = D[1, 2*`i'-1]
+    if tmp[1,1]<. {
+	    matrix colnames tmp = `modelname'
+		matrix b = nullmat(b), tmp
+		matrix tmp[1,1] = C[1, 2*`i']
+		matrix se = nullmat(se), tmp
+	}
+}
+ereturn post b
+estadd matrix se
+eststo pooled_older_male
 esttab, se mtitle noobs
 
 //Column 4

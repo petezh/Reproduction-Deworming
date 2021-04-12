@@ -9,7 +9,6 @@
 
 set more off
 clear all
-set maxvar 10000
 
 local outcome tot_earn12m_t
 
