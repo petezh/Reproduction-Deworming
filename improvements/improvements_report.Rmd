@@ -38,7 +38,6 @@ if (num_packages > 0) { # if exists
   df <- do.call(rbind, df) # collect improvements
   df <- df[,c(1, 2, 4)] # reorder/drop columns
   df[,1] <- str_to_title(str_replace(df[,1], '_', ' ')) # fix name
-  df[,3] <- paste0("[Link](", df[,3], ")") # convert to markdown
   colnames(df) <- c("Type", "Description", "URL") # add column names
   knitr::kable(df, align = "cl") # convert to table
 }

@@ -39,11 +39,12 @@ Code
 Repository with code, data, and documentation.
 </td>
 <td style="text-align:center;">
-[Link](https://github.com/petezh/Reproduction-Deworming)
+https://github.com/petezh/Reproduction-Deworming
 </td>
 </tr>
 </tbody>
 </table>
+
 
 # Paper Improvements
 
