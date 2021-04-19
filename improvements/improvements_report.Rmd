@@ -1,0 +1,83 @@
+---
+output:
+  md_document:
+    variant: markdown_github
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup-intro, results='hide', echo = FALSE, warning=FALSE, message=FALSE}
+# author: @petezh
+packages <- c("tidyverse",
+              "knitr",
+              "kableExtra",
+              "RJSONIO",
+              "here") # packages
+lapply(packages, library, character.only = TRUE)
+json_file <- "improvements/results.json" # set to target your 
+raw_json<- fromJSON(here(json_file))
+typeName <- c( # convert types
+  "version_control" = "Version Control",
+  "file_organization" = "File Organization",
+  "master_script" = "Master Script",
+  "open_source_software" = "Open Source Software",
+  "other" = "Other"
+)
+```
+
+# Introduction
+
+This file is an automated improvements report based on a submission on the [Social Science Reproduction Platform](https://www.socialsciencereproduction.org/) (SSRP). The improvements follow the [guidelines](https://bitss.github.io/ACRE/improvements.html) outlined by the [Accelerating Computational Reproducibility in Economics](https://www.bitss.org/ecosystem/acre/) (ACRE) project. Reproducers will attempt to improve the reproducibility of paper elements and suggest directions for future improvements.
+
+```{r paper-improvements, results='asis', echo = FALSE}
+num_display_imp = sum(sapply(raw_json$improvement$paper_level_improvements, function(x) x['phase']=='current')) # count current, paper level improvements
+if(num_display_imp > 0) { # if exists
+  cat('# Paper Improvements\nThere were', num_display_imp, 'overall improvement(s) to the paper.') # write text
+  
+  df <- lapply(raw_json$improvement$paper_level_improvements, function(imp) # loop through improvements
+    {if(imp['phase'] == 'current'){ # only current improvements
+    data.frame(matrix(unlist(imp), ncol=3, byrow=T))} # turn into data frame
+    })
+  df <- do.call(rbind, df) # collect improvements
+  df <- df[,c(2, 1)] # reorder/drop columns
+  df[,1] <- typeName[df[,1]]
+  colnames(df) <- c("Type", "Description") # add column names
+  knitr::kable(df, align = "cl") # convert to table
+}
+```
+
+```{r display-item-improvements, results='asis', echo = FALSE}
+num_paper_imp =  sum(sapply(raw_json$improvement$improved_display_items, function(x) x['phase']=='current')) # count current, paper level improvements
+if(num_paper_imp > 0) { # if exists
+  cat('# Display Item Improvements\nThere were', num_paper_imp, 'improvement(s) made to display items') # write text
+  
+  df <- lapply(c(raw_json$improvement$improved_display_items, raw_json$improvement$paper_level_improvements), function(imp) # loop through improvements
+    {if(imp['phase'] == 'future'){ # only current improvements
+    data.frame(matrix(unlist(imp), ncol=3, byrow=T))} # turn into data frame
+    })
+  df <- do.call(rbind, df) # collect improvements
+  df <- df[,c(2, 1)] # reorder/drop columns
+  df[,1] <- typeName[df[,1]]
+  colnames(df) <- c("Type", "Description") # add column names
+  knitr::kable(df, align = "cl") # convert to table
+}
+```
+
+```{r future-improvements, results='asis', echo = FALSE}
+num_future_imp = sum(sapply(raw_json$improvement$improved_display_items, function(x) x['phase']=='future')) + sum(sapply(raw_json$improvement$paper_level_improvements, function(x) x['phase']=='future')) # count current, display item improvements
+if(num_future_imp > 0) { # if exists
+  cat('# Future Improvements\nThere were', num_future_imp, 'suggested future improvements.') # write text
+  
+  df <- lapply(c(raw_json$improvement$improved_display_items, raw_json$improvement$paper_level_improvements), function(imp) # loop through improvements
+    {if(imp['phase'] == 'future'){ # only current improvements
+    data.frame(matrix(unlist(imp), ncol=3, byrow=T))} # turn into data frame
+    })
+  df <- do.call(rbind, df) # collect improvements
+  df <- df[,c(2, 1)] # reorder/drop columns
+  df[,1] <- typeName[df[,1]]
+  colnames(df) <- c("Type", "Description") # add column names
+  knitr::kable(df, align = "cl") # convert to table
+}
+```
+
+
