@@ -33,13 +33,13 @@ URL
 <tbody>
 <tr>
 <td style="text-align:center;">
-Version Control
+Code
 </td>
 <td style="text-align:left;">
 Repository with code, data, and documentation.
 </td>
 <td style="text-align:center;">
-<https://github.com/petezh/Reproduction-Deworming>
+[Link](https://github.com/petezh/Reproduction-Deworming)
 </td>
 </tr>
 </tbody>
@@ -88,7 +88,7 @@ library installations or directory conflicts.
 </tr>
 <tr>
 <td style="text-align:center;">
-Open Source Software
+Open Source_software
 </td>
 <td style="text-align:left;">
 Removed memory, matsize, and maxvar constraints that required the more
@@ -98,7 +98,7 @@ results.
 </tr>
 <tr>
 <td style="text-align:center;">
-Code
+Other
 </td>
 <td style="text-align:left;">
 Swapped Figure 1 and Figure 2 in Worms20_master_main.do, which were put
@@ -107,7 +107,7 @@ in the wrong order.
 </tr>
 <tr>
 <td style="text-align:center;">
-Code
+Other
 </td>
 <td style="text-align:left;">
 Added a Latex template that contains missing and macros.
@@ -133,7 +133,7 @@ Description
 <tbody>
 <tr>
 <td style="text-align:center;">
-Version Control
+Open Source_software
 </td>
 <td style="text-align:left;">
 Refactor Stata code into R, a fully open-source software.
@@ -141,7 +141,7 @@ Refactor Stata code into R, a fully open-source software.
 </tr>
 <tr>
 <td style="text-align:center;">
-File Organization
+Dynamic Document
 </td>
 <td style="text-align:left;">
 Move analysis into a documented, R markdown notebook.
