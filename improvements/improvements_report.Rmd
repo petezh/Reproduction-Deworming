@@ -64,12 +64,12 @@ if(num_paper_imp > 0) { # if exists
 ```
 
 ```{r future-improvements, results='asis', echo = FALSE}
-num_future_imp = sum(sapply(raw_json$improvement$improved_display_items, function(x) x['phase']=='future')) + sum(sapply(raw_json$improvement$paper_level_improvements, function(x) x['phase']=='future')) # count current, display item improvements
+num_future_imp = sum(sapply(raw_json$improvement$improved_display_items, function(x) x['phase']=='future')) + sum(sapply(raw_json$improvement$paper_level_improvements, function(x) x['phase']=='future')) # count future improvements
 if(num_future_imp > 0) { # if exists
-  cat('# Future Improvements\nThere were', num_future_imp, 'suggested future improvements.') # write text
+  cat('# Future Improvements\nThere were', num_future_imp, 'suggested future improvement(s).') # write text
   
-  df <- lapply(c(raw_json$improvement$improved_display_items, raw_json$improvement$paper_level_improvements), function(imp) # loop through improvements
-    {if(imp['phase'] == 'future'){ # only current improvements
+  df <- lapply(c(raw_json$improvement$improved_display_items, raw_json$improvement$paper_level_improvements), function(imp) # loop through all improvements
+    {if(imp['phase'] == 'future'){ # only future improvements
     data.frame(matrix(unlist(imp), ncol=3, byrow=T))} # turn into data frame
     })
   df <- do.call(rbind, df) # collect improvements

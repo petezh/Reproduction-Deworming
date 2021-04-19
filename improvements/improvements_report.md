@@ -83,7 +83,7 @@ Added a Latex template that contains missing and macros.
 
 # Future Improvements
 
-There were 2 suggested future improvements.
+There were 2 suggested future improvement(s).
 <table>
 <thead>
 <tr>
