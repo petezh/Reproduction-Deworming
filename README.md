@@ -36,7 +36,7 @@ The social IRR is 37% and the 25 year, 10% discount rate NPV is USD PPP 230.71.
 
 Installations of [R](https://cran.r-project.org/mirrors.html) and [Stata **IC**](https://www.stata.com/install-guide/) are required to run the analysis and cleaning scripts.
 
-The following is a diagram of all inputs and outputs, where "manual" indicates a manual transcription:
+The following is a diagram of all inputs and outputs, where "manual" indicates a manual transcription. A [full diagram](https://www.socialsciencereproduction.org/reproductions/4043c95e-0a6a-4acc-b228-4c4abe10b3c4/assessment?step=1) is available on the ACRE platform.
 
 ```
   Table 1 - KLPS4_E+_earnings_consumption_main_byage.tex
@@ -51,94 +51,16 @@ The following is a diagram of all inputs and outputs, where "manual" indicates a
       │   └── Worms20_MasterDo.do
       │       └── Worms20_Globals.do
       └── Worms20_Analysis.dta
-  Figure 1 - KLPS4_KD_fullsample.eps
-  └── Consumption_earnings_KD.do
-      ├── Worms20_master_main.do
-      │   └── Worms20_MasterDo.do
-      │       └── Worms20_Globals.do
-      └── Worms20_Analysis.dta
-  Figure 2 - KLPS4_cost_benefit_pooled.eps
-  └── Cost_benefit_pooled.R
-      └── Table S12
-          └── Cost_benefit_table_pooled.Rmd
-              └── Parameters
   In-Text Results
   └── Worms20_intext_calc.do
       ├── Worms20_Attrition.dta
       └── Worms20_Heterogeneity.dta
-  Figure S1
-  └── manual
-      └── input placeholder 1
-  Figure S2
-  └── manual
-      └── Confidential location data
-  Figure S3A - KLPS4_consumption_graph.eps
-  └── Consumption_graph.R
-      └── Consumption_results_for_R.xlsx
-          └── Consumption_gender_results_for_R.do
-              ├── Worms20_Analysis.dta
-              └── Worms20_master_paper_appendix.do
-  Figure S3B - KLPS4_earnings_graph.eps
-  └── Earnings_graph.R
-      └── Earnings_results_for_R.xlsx
-          └── Earnings_gender_results_for_R.do
-              ├── Worms20_Analysis.dta
-              └── Worms20_master_paper_appendix.do
-  Figure S4 - ConsumptionTreatEffect_YearsTreat.eps
-  └── Consumption_yearstreat_figure.do
-      ├── Worms20_Analysis.dta
-      └── Worms20_master_paper_appendix.do
-  Table S1 - KLPS4_E+_Attrition_main.tex
-  └── Attrition_main.do
-      ├── Worms20_Attrition.dta
-      └── Worms20_master_paper_appendix.do
-  Table S2 - KLPS4_E+_Attrition_olderyounger.tex
-  └── Attrition_byage.do
-      ├── Worms20_Attrition.dta
-      └── Worms20_master_paper_appendix.do
-  Table S3 - KLPS4_E+_earnings_consumption_main_byage_klps4.tex
-  └── Earnings_consumption_hhearn_main_byage_klps4.do
-      ├── Worms20_Analysis.dta
-      └── Worms20_master_paper_appendix.do
-  Table S4 - KLPS4_E+_earnings_labor_occchoice_main_byage_klps4.tex
-  └── Earnings_wealth_labor_occchoice_main_byage_klps4.do
-      ├── Worms20_Analysis.dta
-      └── Worms20_master_paper_appendix.do
-  Table S5 - KLPS4_E+_earnings_consumption_main_byage_scyvoced.tex
-  └── Earnings_consumption_hhearn_main_byage_scyvoced.do
-      ├── Worms20_Analysis.dta
-      ├── Worms20_Analysis_scyvoced.dta
-      └── Worms20_master_paper_appendix.do
-  Table S6 - KLPS4_E+_earnings_labor_occchoice_main_byage_scyvoced.tex
-  └── Earnings_wealth_labor_occchoice_main_byage_scyvoced.do
-      ├── Worms20_Analysis.dta
-      ├── Worms20_Analysis_scyvoced.dta
-      └── Worms20_master_paper_appendix.do
-  Table S7 - KLPS4_E+_pooled_outcomes_extended.tex
-  └── Three_panel_main_outcomes.do
-      ├── Worms20_Analysis.dta
-      └── Worms20_master_paper_appendix.do
-  Table S8 - KLPS4_E+_pooled_earnings_consumption_parentsedu_long.tex
-  └── Earnings_consump_parentsedu_long.do
-      ├── Worms20_Heterogeneity.dta
-      └── Worms20_master_paper_appendix.do
-  Table S9 - KLPS4_E+_pooled_earnings_consumption_5yr_agebuckets_long.tex
-  └── Threepanel_earn_consump_5yr_agebuckets_long.do
-      ├── Worms20_Analysis.dta
-      └── Worms20_master_paper_appendix.do
-  Table S10 - KLPS4_E+_heterogeneity_summarystats.tex
-  └── Heterogeneity_summarystats.do
-      ├── Worms20_Heterogeneity.dta
-      └── Worms20_master_paper_appendix.do
-  Table S11 - KLPS4_E+_heterogeneity_treateffects.tex
-  └── Heterogeneity_treateffects.do
-      ├── Worms20_Heterogeneity.dta
-      ├── Worm_Infection_Panel.dta
-      └── Worms20_master_paper_appendix.do
   Table S12
   └── Cost_benefit_table_pooled.Rmd
       └── Parameters
 ```
+
+### Improvements
 
 Edits to the original file include:
 
