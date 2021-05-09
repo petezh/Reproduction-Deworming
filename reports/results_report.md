@@ -2,20 +2,19 @@
 
 This report summarizes a reproduction attempt for **Twenty-year economic
 impacts of deworming** by Joan Hamory, Edward Miguel, Michael Walker,
-Michael Kremer, Sarah Baird. It is based on a
+Michael Kremer, Sarah Baird. It is generated from a
 [submission](https://www.socialsciencereproduction.org/reproductions/4043c95e-0a6a-4acc-b228-4c4abe10b3c4/index)
 on the [Social Science Reproduction
 Platform](https://www.socialsciencereproduction.org/) (SSRP). The
-improvements follow the
+reproduction follows the
 [guidelines](https://bitss.github.io/ACRE/improvements.html) outlined by
 the [Accelerating Computational Reproducibility in
 Economics](https://www.bitss.org/ecosystem/acre/) (ACRE) project. The
-reproducer implemented and suggested improvements to the paper’s
-reproducibility.
+reproducer implemented and suggested improvements and robustness checks.
 
 # Revised Package
 
-The revised materials are listed below..
+The revised materials are listed below.
 <table>
 <thead>
 <tr>
@@ -26,7 +25,7 @@ Type
 Description
 </th>
 <th style="text-align:center;">
-URL
+Link
 </th>
 </tr>
 </thead>
@@ -39,12 +38,11 @@ Code
 Repository with code, data, and documentation.
 </td>
 <td style="text-align:center;">
-https://github.com/petezh/Reproduction-Deworming
+www.github.com/petezh/Reproduction-Deworming
 </td>
 </tr>
 </tbody>
 </table>
-
 
 # Paper Improvements
 
@@ -146,6 +144,83 @@ Dynamic Document
 </td>
 <td style="text-align:left;">
 Move analysis into a documented, R markdown notebook.
+</td>
+</tr>
+</tbody>
+</table>
+
+# Robustness Checks
+
+There were 3 robustness checks(s).
+<table>
+<thead>
+<tr>
+<th style="text-align:center;">
+Variation
+</th>
+<th style="text-align:left;">
+Results
+</th>
+<th style="text-align:center;">
+Impact on Validity
+</th>
+<th style="text-align:left;">
+Explanation
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+Consider only older and male subjects.
+</td>
+<td style="text-align:left;">
+Older males experience a 0.41 USD PPP increase in hourly earnings (as
+opposed to 0.14 overall) with a standard error of 0.16, making the
+result highly significant.
+</td>
+<td style="text-align:center;">
+Increases in earnings may be driven largely by older males, which should
+manifest as highly significant increases for that subset.
+</td>
+<td style="text-align:left;">
+Older and male subjects could experience particularly large increases in
+earnings if a society revolves around “male breadwinners.”
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Consider only older and male subjects.
+</td>
+<td style="text-align:left;">
+Older males experience a 6% increase in the rate of urban residence (as
+opposed to 4% overall) with a standard error of 0.03.
+</td>
+<td style="text-align:center;">
+Increases in urban residence may be driven largely by older males, which
+should manifest as highly significant increases for that subset.
+</td>
+<td style="text-align:left;">
+Older males may have the greatest mobility and independence.
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+Consider only older and male subjects.
+</td>
+<td style="text-align:left;">
+Older males experience a 4.44 hour increase in weekly non-agricultural
+work (as opposed to 1.91 overall) with a standard error of 1.08, making
+the result highly significant.
+</td>
+<td style="text-align:center;">
+Increases in professional work may be driven by older males who have
+greater access to non-agricultural opportunities.
+</td>
+<td style="text-align:left;">
+Increases in non-agricultural work hours may be driven largely by older
+males, which should manifest as highly significant increases for that
+subset.
 </td>
 </tr>
 </tbody>

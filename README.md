@@ -62,31 +62,7 @@ The following is a diagram of all inputs and outputs, where "manual" indicates a
       └── Table S12
           └── Cost_benefit_table_pooled.Rmd
               └── Parameters
-  In-Text Result - percent_ever_surveyed.log
-  └── Worms20_intext_calc.do
-      ├── Worms20_Attrition.dta
-      └── Worms20_Heterogeneity.dta
-  In-Text Result - percent_currently_in_school.log
-  └── Worms20_intext_calc.do
-      ├── Worms20_Attrition.dta
-      └── Worms20_Heterogeneity.dta
-  In-Text Result - agriculture_with_hhmembers.log
-  └── Worms20_intext_calc.do
-      ├── Worms20_Attrition.dta
-      └── Worms20_Heterogeneity.dta
-  In-Text Result - FDRadjustment_olderyounger.log
-  └── Worms20_intext_calc.do
-      ├── Worms20_Attrition.dta
-      └── Worms20_Heterogeneity.dta
-  In-Text Result - percent_urban_nairobi.log
-  └── Worms20_intext_calc.do
-      ├── Worms20_Attrition.dta
-      └── Worms20_Heterogeneity.dta
-  In-Text Result - lambda1_lambda2_coefficients.log
-  └── Worms20_intext_calc.do
-      ├── Worms20_Attrition.dta
-      └── Worms20_Heterogeneity.dta
-  In-Text Result - saturation_4km.log
+  In-Text Results
   └── Worms20_intext_calc.do
       ├── Worms20_Attrition.dta
       └── Worms20_Heterogeneity.dta
